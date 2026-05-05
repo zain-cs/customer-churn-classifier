@@ -1,29 +1,91 @@
-# 📉 Customer Churn Classifier
+v---
 
-> Predict which customers are likely to cancel — before they do.
+## Quickstart
 
-A complete binary classification pipeline using **Logistic Regression** and **XGBoost**,
-with data generation, model evaluation, and inference. Built as a practical ML portfolio project.
+### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/customer-churn-classifier.git
+cd customer-churn-classifier
+```
+
+### 2. Create and activate virtual environment
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Mac/Linux
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Generate the dataset
+```bash
+python src/generate_data.py
+```
+
+### 5. Train the models
+```bash
+python src/train.py
+```
+
+### 6. Predict on new customers
+```bash
+python src/predict.py
+```
 
 ---
 
-## 🧠 Business Problem
+## Features
 
-Customer churn costs subscription businesses millions. Acquiring a new customer costs
-5–7x more than keeping an existing one. This model predicts churn probability per customer
-so retention teams can intervene early with offers or outreach.
-
----
-
-## 📊 Results
-
-| Model               | Test AUC | CV AUC (5-fold) |
-|---------------------|----------|-----------------|
-| Logistic Regression | 0.704    | 0.675           |
-| XGBoost             | 0.687    | 0.691           |
-
-![Results](outputs/results.png)
+| Feature | Description |
+|---|---|
+| `Tenure` | Number of months the customer has been with the company |
+| `Contract` | Contract type — Month-to-month, One year, Two year |
+| `MonthlyCharges` | Current monthly bill amount |
+| `SupportCalls` | Number of support tickets raised |
+| `NumProducts` | Number of services the customer is subscribed to |
+| `InternetService` | Type of internet service — DSL, Fiber optic, or None |
+| `PaymentMethod` | How the customer pays their bill |
 
 ---
 
-## 🗂️ Project Structure
+## Key Insights
+
+- **Contract type** is the strongest predictor — month-to-month customers churn at 3x the rate of annual customers
+- **New customers churn most** — the majority of churners leave within their first year
+- **High support calls** signal dissatisfaction and strongly predict churn
+- **Bundled customers stay longer** — subscribing to multiple products reduces churn significantly
+
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Python 3.10+ | Core language |
+| pandas & NumPy | Data manipulation |
+| scikit-learn | Logistic Regression, preprocessing, evaluation |
+| XGBoost | Gradient boosting classifier |
+| matplotlib & seaborn | Visualization |
+
+---
+
+## Future Improvements
+
+- [ ] Add SHAP values for per-customer explainability
+- [ ] Build a Streamlit dashboard for business users
+- [ ] Connect to real Telco dataset from Kaggle
+- [ ] Hyperparameter tuning with Optuna
+- [ ] Deploy as a REST API with FastAPI
+
+---
+
+## License
+
+MIT License — free to use, modify, and distribute.
