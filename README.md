@@ -1,91 +1,68 @@
-v---
+<div align="center">
 
-## Quickstart
+<img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
+<img src="https://img.shields.io/badge/XGBoost-FF6600?style=for-the-badge&logo=xgboost&logoColor=white"/>
+<img src="https://img.shields.io/badge/Status-Complete-brightgreen?style=for-the-badge"/>
 
-### 1. Clone the repository
+# 📉 Customer Churn Classifier
+
+**Predict customer churn before it happens — and save the revenue.**
+
+*An end-to-end machine learning pipeline built for real-world business impact.*
+
+</div>
+
+---
+
+## 🧩 Problem Statement
+
+Every month, subscription businesses lose customers silently. By the time churn is noticed, it's too late. This project answers one critical question:
+
+> **"Which customers are most likely to leave — and why?"**
+
+Using historical customer behavior, this classifier flags high-risk customers with a churn probability score, giving retention teams the window they need to act.
+
+---
+
+## 📊 Model Performance
+
+<div align="center">
+
+| Model | Test AUC | CV AUC (5-fold) | Accuracy |
+|---|---|---|---|
+| ✅ Logistic Regression | **0.704** | 0.675 | 72% |
+| XGBoost | 0.687 | 0.691 | 72% |
+
+</div>
+
+![Results](outputs/results.png)
+
+> 📌 **Logistic Regression** was selected as the final model based on Test AUC performance.
+
+---
+
+## 🚀 Quickstart
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/customer-churn-classifier.git
+# Clone the repo
+git clone https://github.com/zain-cs/customer-churn-classifier.git
 cd customer-churn-classifier
-```
 
-### 2. Create and activate virtual environment
-```bash
+# Create virtual environment
 python -m venv venv
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # Mac/Linux
 
-# Windows
-venv\Scripts\activate
-
-# Mac/Linux
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### 4. Generate the dataset
-```bash
-python src/generate_data.py
-```
-
-### 5. Train the models
-```bash
-python src/train.py
-```
-
-### 6. Predict on new customers
-```bash
-python src/predict.py
+# Run the full pipeline
+python src/generate_data.py  # Step 1 — Generate data
+python src/train.py          # Step 2 — Train & evaluate
+python src/predict.py        # Step 3 — Predict new customers
 ```
 
 ---
 
-## Features
-
-| Feature | Description |
-|---|---|
-| `Tenure` | Number of months the customer has been with the company |
-| `Contract` | Contract type — Month-to-month, One year, Two year |
-| `MonthlyCharges` | Current monthly bill amount |
-| `SupportCalls` | Number of support tickets raised |
-| `NumProducts` | Number of services the customer is subscribed to |
-| `InternetService` | Type of internet service — DSL, Fiber optic, or None |
-| `PaymentMethod` | How the customer pays their bill |
-
----
-
-## Key Insights
-
-- **Contract type** is the strongest predictor — month-to-month customers churn at 3x the rate of annual customers
-- **New customers churn most** — the majority of churners leave within their first year
-- **High support calls** signal dissatisfaction and strongly predict churn
-- **Bundled customers stay longer** — subscribing to multiple products reduces churn significantly
-
----
-
-## Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| Python 3.10+ | Core language |
-| pandas & NumPy | Data manipulation |
-| scikit-learn | Logistic Regression, preprocessing, evaluation |
-| XGBoost | Gradient boosting classifier |
-| matplotlib & seaborn | Visualization |
-
----
-
-## Future Improvements
-
-- [ ] Add SHAP values for per-customer explainability
-- [ ] Build a Streamlit dashboard for business users
-- [ ] Connect to real Telco dataset from Kaggle
-- [ ] Hyperparameter tuning with Optuna
-- [ ] Deploy as a REST API with FastAPI
-
----
-
-## License
-
-MIT License — free to use, modify, and distribute.
+## 🗂️ Project Structure
